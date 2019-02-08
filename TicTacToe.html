@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #board {
+        background-color: black;
+      }
+
+      td.cell {
+        background-color: white;
+        width: 100px;
+        height: 100px;
+        font-size: 60pt;
+        text-align: center;
+      }
+    </style>
+    <script>
+      var count = 0;
+      function init() {
+        var b = document.getElementById("board");
+        for (var i = 0; i < 3; i++) {
+          var tr = document.createElement("tr");
+          for (var j = 0; j < 3; j++) {
+            var td = document.createElement("td");
+            td.className = "cell";
+            td.id = "cell" + i + j;
+            td.onclick = clicked;
+            tr.appendChild(td);
+          }
+          b.appendChild(tr);
+        }
+      }
+      function clicked(e) {
+        if (count % 2 == 0) {
+          e.target.textContent = "〇";
+          count++;
+        } else {
+          e.target.textContent = "✕";
+          count++;
+        }
+      }
+    </script>
+  </head>
+
+  <body onload="init()">
+    <table id="board"></table>
+  </body>
+</html>
